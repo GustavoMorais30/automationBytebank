@@ -21,8 +21,8 @@ describe ('Formulário de Login', () =>{
     it('Realizar Login com sucesso', () => {
         cy.getByData('botao-login').click()
         //Para adicionar o email ainda precisa criar uma conta no site e o mesmo se aplica para a senha. Por isso deixarei essa parte do código comentado
-       // cy.getByData('email-input').type('neilton@alura.com')
-       // cy.getByData('senha-input').type('123456')
-       // cy.getByData('botao-enviar').click
+        cy.getByData('email-input').type('teste@teste.com')
+        cy.getByData('senha-input').type('123456')
+        cy.getByData('botao-enviar').click
     } )
 })
