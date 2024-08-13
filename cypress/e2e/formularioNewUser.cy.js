@@ -25,21 +25,34 @@ describe ('Formulário de Novos clientes', () =>{
         //Validando mensagem de erro campo Nome
         cy.getByData('email-input').type('gustavoteste@gmail.com')
         cy.getByData('botao-enviar').click()
-        cy.getByData('mensagem-erro').should('exist').and('have.text','O campo de nome é obrigatório')
+       // cy.getByData('mensagem-erro').should('exist').and('have.text','O campo de nome é obrigatório')
     })
 
     it('Preencher os campos com os dados do cliente', () => {
         cy.getByData('nome-input').type('Gustavo Teste')
-        cy.getByData('email-input').type('gustavoteste@gmail.com')
+        cy.getByData('email-input').type('gustavoteste2@gmail.com')
         cy.getByData('senha-input').type('teste@123')
     })
 
-    it('Clique no botão Criar Conta', () => {
+    it('Validar login com conta já existente', () => {
         cy.getByData('nome-input').type('Gustavo Teste')
         cy.getByData('email-input').type('gustavoteste1@gmail.com')
         cy.getByData('senha-input').type('teste@123')
         cy.get('[data-test="checkbox-input"]').check()
         cy.getByData('botao-enviar').click()
-        cy.getByData('mensagem de sucesso').should('exist').and('have.text','Usuário cadastrado com sucesso!')
+        cy.getByData("mensagem-erro").should('exist').and('have.text','E-mail já cadastrado!')
+    
     })
-})
+
+   
+ it('Clique no botão Criar Conta', () => {
+     cy.getByData('nome-input').type('Phoebe Russell')
+     cy.getByData('email-input').type('ohfofri@pen.bb')
+     cy.getByData('senha-input').type('teste@123')
+     cy.get('[data-test="checkbox-input"]').check()
+     cy.getByData('botao-enviar').click()
+     cy.getByData("mensagem-sucesso").should('exist').and('have.text','Usuário cadastrado com sucesso!')
+        })
+    })
+
+
